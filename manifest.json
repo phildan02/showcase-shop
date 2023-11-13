@@ -1,0 +1,8 @@
+{
+  "short_name": "Showcase-website",
+  "name": "A website containing a showcase",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
