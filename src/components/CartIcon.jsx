@@ -1,14 +1,17 @@
-function CartIcon(props) {
-    const { quantity = 0, onCartListShow = Function.prototype } = props;
+import { useContext } from 'react';
+import { ShopContext } from '../context';
+
+function CartIcon() {
+    const { order, cartListShow } = useContext(ShopContext);
 
     return (
         <div
             className="cart white-text yellow darken-4"
-            onClick={onCartListShow}
+            onClick={cartListShow}
         >
             <i className="material-icons">shopping_cart</i>
-            {quantity ? (
-                <span className="cart-quantity">{quantity}</span>
+            {order.length ? (
+                <span className="cart-quantity">{order.length}</span>
             ) : null}
         </div>
     );

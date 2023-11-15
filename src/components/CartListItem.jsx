@@ -1,12 +1,15 @@
+import { useContext } from 'react';
+import { ShopContext } from '../context';
+
 function CartListItem(props) {
     const {
         id,
         name,
         price,
-        quantity,
-        onRemoveFromCart = Function.prototype,
-        onQuantityChange = Function.prototype,
+        quantity
     } = props;
+
+    const { removeFromCart, quantityChange } = useContext(ShopContext);
 
     return <li className="collection-item">
         {name} x{quantity} = {price * quantity} руб.
@@ -14,16 +17,16 @@ function CartListItem(props) {
             <i
                 id="quantity-add"
                 className="material-icons non-select"
-                onClick={(e) => onQuantityChange(e.target.id, id)}
+                onClick={(e) => quantityChange(e.target.id, id)}
             >add</i>
             <i
                 id="quantity-reduce"
                 className="material-icons non-select"
-                onClick={(e) => onQuantityChange(e.target.id, id)}
+                onClick={(e) => quantityChange(e.target.id, id)}
             >remove</i>
         </div>
         <span className="secondary-content remove-order-item">
-            <i className="material-icons" onClick={() => onRemoveFromCart(id)}>clear</i>
+            <i className="material-icons" onClick={() => removeFromCart(id)}>clear</i>
         </span>
     </li>;
 }
